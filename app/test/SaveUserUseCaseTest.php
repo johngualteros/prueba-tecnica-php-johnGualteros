@@ -14,16 +14,13 @@ class SaveUserUseCaseTest extends TestCase
 {
     public function testSaveUser()
     {
-        // Create the mock of UserRepository
-        $userRepositoryMock = $this->getMockBuilder(UserRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        // Define of behavior waited for UserRepository
-        $userRepositoryMock->expects($this->once())
-            ->method('save')
-            ->with($this->isInstanceOf(User::class));
-        // Create the instance of SaveUserCase, passing the UserRepository mock
-        $saveUserUseCase = new SaveUserUseCase($userRepositoryMock);
-        $saveUserUseCase->execute('Nombre del Usuario', 'correo@example.com', 'contraseña');
+        $userRepository = new UserRepository();
+        $filePath = __DIR__ . '/../db/table_users.txt';
+        // Create the instance of SaveUserCase, passing the userRepository and filepath
+        $saveUserUseCase = new SaveUserUseCase($userRepository, $filePath);
+        // Execute of case use
+        $saveUserUseCase->execute('John Gualteros', 'test@gmail.com', 'password');
+        $fileContents = file_get_contents($filePath);
+        $this->assertNotNull($fileContents);
     }
 }

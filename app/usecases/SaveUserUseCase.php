@@ -20,6 +20,6 @@ class SaveUserUseCase
     public function execute($name, $email, $password)
     {
         $newUser = new User($name, $email, $password);
-        $this->userRepository->save($newUser);
+        $this->userRepository->save($newUser, $this->file);
     }
 }

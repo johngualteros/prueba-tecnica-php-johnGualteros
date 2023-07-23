@@ -7,7 +7,8 @@ require_once __DIR__ . '/../models/User.php';
 // import the space of names
 use app\models\User;
 
-class UserTest extends TestCase {
+class UserTest extends TestCase
+{
     public function testGetName() {
         // Create the object user for made the test
         $user = new User("John Doe", "john@example.com", "password123");
