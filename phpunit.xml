@@ -1,0 +1,9 @@
+<phpunit>
+    <testsuites>
+        <testsuite name="User Test suite">
+            <directory>test</directory>
+        </testsuite>
+    </testsuites>
+    <log type="coverage-html" target="coverage-report/" />
+    <log type="junit" target="junit-report.xml" />
+</phpunit>
